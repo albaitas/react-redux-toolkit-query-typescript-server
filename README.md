@@ -2,9 +2,6 @@
 
 This is a web applications project written using Create React App, Redux Toolkit, Typescript, RTK Query with json-server and Fake Database.
 
-## Demo
-
-Project hosted on Vercel: https://react-redux-toolkit-query-typescript-server.vercel.app
 
 ## Features
 
@@ -19,14 +16,13 @@ Project hosted on Vercel: https://react-redux-toolkit-query-typescript-server.ve
 - json-server
 
 
-
 ## Installation
 
 Install **`git`**, **`nodejs`**, **`npm`** in your local computer
 
 Clone this repository to your local computer:
 
-**`$ git clone https://react-redux-toolkit-query-typescript-server.vercel.app
+**`$ git clone https://react-redux-toolkit-query-typescript-server.git
 
 Install dependencies:
 
