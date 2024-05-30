@@ -3,12 +3,7 @@ import { RiCloseCircleLine } from 'react-icons/ri';
 import PostForm from './PostForm';
 import { TiEdit } from 'react-icons/ti';
 import { useRemovePostMutation } from '../redux/postsApi';
-import { IPost, RemovePost, EditPost, UpdatePost } from '../types';
-
-interface PostItemProps {
-  posts: IPost[];
-  updatePost: UpdatePost;
-}
+import { RemovePost, EditPost, PostItemProps } from '../types';
 
 const PostItem: React.FC<PostItemProps> = ({ posts, updatePost }) => {
   const [removePost] = useRemovePostMutation();
@@ -45,3 +40,4 @@ const PostItem: React.FC<PostItemProps> = ({ posts, updatePost }) => {
 };
 
 export default PostItem;
+
