@@ -1,15 +1,15 @@
-import PostItem from './PostItem';
 import { useGetAllPostsQuery, useAddPostMutation, useUpdatePostMutation } from '../redux/postsApi';
 import PostForm from './PostForm';
+import PostItem from './PostItem';
 import { AddPost, UpdatePost } from '../types';
 
-const PostList = () => {
-  const { data, isLoading, isError } = useGetAllPostsQuery('');
+const PostList: React.FC = () => {
+  const { data, isLoading, isError } = useGetAllPostsQuery();
   const [addPost] = useAddPostMutation();
   const [updatePost] = useUpdatePostMutation();
 
   const add: AddPost = async (newPost) => {
-    await addPost({ name: newPost }).unwrap();
+    await addPost(newPost).unwrap();
   };
 
   const update: UpdatePost = async (id, name) => {
@@ -26,7 +26,7 @@ const PostList = () => {
         <>
           <h1>Posts List</h1>
           <PostForm addPost={add} />
-          <PostItem posts={data} updatePost={update} />
+          <PostItem posts={data || []} updatePost={update} />
         </>
       )}
     </>
