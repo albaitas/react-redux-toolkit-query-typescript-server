@@ -1,13 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { AddPost } from '../types';
-
-interface PostFormProps {
-  addPost: AddPost;
-  edit?: { id: number; value: string };
-}
+import { PostFormProps } from '../types';
 
 const PostForm: React.FC<PostFormProps> = ({ addPost, edit }) => {
-  const [task, setTask] = useState(edit ? edit.value : '');
+  const [post, setPost] = useState(edit ? edit.value : '');
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -16,28 +11,28 @@ const PostForm: React.FC<PostFormProps> = ({ addPost, edit }) => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTask(e.target.value);
+    setPost(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!task || /^\s*$/.test(task)) return;
-    addPost(task);
-    setTask('');
+    if (!post || /^\s*$/.test(post)) return;
+    addPost(post);
+    setPost('');
   };
 
   return (
     <form className='todo-form'>
       {edit ? (
         <>
-          <input value={task} onChange={handleChange} name='text' ref={inputRef} className='todo-input edit' />
+          <input value={post} onChange={handleChange} name='text' ref={inputRef} className='todo-input edit' />
           <button onClick={handleSubmit} className='todo-button edit'>
             Update
           </button>
         </>
       ) : (
         <>
-          <input placeholder='Add a todo' value={task} onChange={handleChange} name='text' className='todo-input' ref={inputRef} />
+          <input placeholder='Add a todo' value={post} onChange={handleChange} name='text' className='todo-input' ref={inputRef} />
           <button onClick={handleSubmit} className='todo-button'>
             Add Post
           </button>
@@ -48,3 +43,4 @@ const PostForm: React.FC<PostFormProps> = ({ addPost, edit }) => {
 };
 
 export default PostForm;
+
